@@ -20,6 +20,24 @@ const tools = [
     link: '/sonarqube',
     icon: '📊',
   },
+  {
+    title: 'Docker',
+    description: 'Learn containerization with Docker, including image creation, Dockerfiles, and running containers.',
+    link: '/docker',
+    icon: '🐳',
+  },
+  {
+    title: 'Git & GitHub',
+    description: 'Master version control with Git and collaboration through GitHub, including branching, PRs, and workflow.',
+    link: '/git-github',
+    icon: '🔧',
+  },
+  {
+    title: 'Kubernetes',
+    // description: 'Master version control with Git and collaboration through GitHub, including branching, PRs, and workflow.',
+    link: '/kubernets',
+    icon: '',
+  }
 ];
 
 const HomePage = () => {

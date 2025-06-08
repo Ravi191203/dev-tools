@@ -20,6 +20,9 @@ function NavBar() {
                     <li><a href="/jmeter" className="hover:text-yellow-400">Jmeter</a></li>
                     <li><a href="/selenium" className="hover:text-yellow-400">Selenium</a></li>
                     <li><a href="/SonarQube" className="hover:text-yellow-400">SonarQube</a></li>
+                    <li><a href="/docker" className="hover:text-yellow-400">Docker</a></li>
+                    <li><a href="/git-github" className="hover:text-yellow-400">Git & GitHub</a></li>
+                    <li><a href="/kubernets" className="hover:text-yellow-400">Kubernetes</a></li>
                 </ul>
             </div>
 
