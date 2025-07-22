@@ -34,10 +34,16 @@ const tools = [
   },
   {
     title: 'Kubernetes',
-    // description: 'Master version control with Git and collaboration through GitHub, including branching, PRs, and workflow.',
-    link: '/kubernets',
-    icon: '',
-  }
+    description: 'Orchestrate containers at scale using Kubernetes with deployment, scaling, and management tips.',
+    link: '/kubernetes',
+    icon: '☸️',
+  },
+  {
+    title: 'Bash Commands',
+    description: 'Essential Bash commands cheat sheet with syntax highlighting and practical usage examples.',
+    link: '/bash-commands',
+    icon: '💻',
+  },
 ];
 
 const HomePage = () => {
@@ -45,12 +51,17 @@ const HomePage = () => {
     <div className="min-h-screen bg-gray-50 py-10 px-4">
       <div className="max-w-7xl mx-auto text-center mb-12">
         <h1 className="text-4xl font-extrabold text-gray-800">Welcome to Dev-Tools Guide 🚀</h1>
-        <p className="text-gray-600 mt-4 text-lg">Explore modern testing and quality assurance tools with step-by-step tutorials and code examples.</p>
+        <p className="text-gray-600 mt-4 text-lg">
+          Explore modern testing, DevOps, and productivity tools with step-by-step tutorials and practical code examples.
+        </p>
       </div>
 
       <div className="grid md:grid-cols-3 gap-8 max-w-6xl mx-auto">
         {tools.map((tool) => (
-          <div key={tool.title} className="bg-white shadow-md rounded-xl p-6 hover:shadow-lg transition duration-300">
+          <div
+            key={tool.title}
+            className="bg-white shadow-md rounded-xl p-6 hover:shadow-lg transition duration-300"
+          >
             <div className="text-5xl mb-4">{tool.icon}</div>
             <h2 className="text-2xl font-semibold text-gray-800 mb-2">{tool.title}</h2>
             <p className="text-gray-600 mb-4">{tool.description}</p>

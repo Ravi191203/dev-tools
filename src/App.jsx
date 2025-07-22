@@ -11,7 +11,7 @@ import DockerComponent from './components/DockerComponent.jsx';
 import GitGithubComponent from './components/GitGithubComponent.jsx';
 import KubernetesComponent from './components/KubernetesComponent.jsx';
 import AnsibleComponent from './components/AnsibleComponent.jsx';
-
+import BashComponent from './components/BashComponent.jsx';
 
 
 function App() {
@@ -28,6 +28,7 @@ function App() {
         <Route path="/git-github" element={<GitGithubComponent />} />
         <Route path="/kubernets" element={<KubernetesComponent />} />
         <Route path="/ansible" element={<AnsibleComponent />} />
+        <Route path="/bash-commands" element={<BashComponent />} />
       </Routes>
     </BrowserRouter>
   )
