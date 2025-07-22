@@ -1,211 +1,160 @@
-import React from 'react';
+import React, { useState } from 'react';
 
 const JmeterComponent = () => {
+  const [copied, setCopied] = useState(false);
+
+  const handleCopy = (text) => {
+    navigator.clipboard.writeText(text);
+    setCopied(true);
+    setTimeout(() => setCopied(false), 2000);
+  };
+
   return (
-    <div className="max-w-4xl mx-auto p-6 bg-white rounded-lg shadow-md">
-      <h1 className="text-3xl font-bold text-gray-800 mb-6">Apache JMeter Tutorial</h1>
-      
-      <div className="mb-8">
-        <p className="text-gray-700 mb-4">
-          Apache JMeter is an open-source load testing tool that helps analyze and measure the performance of web applications and various services.
-          It's primarily used for testing the strength and performance of applications under different load conditions.
-        </p>
-      </div>
+    <div className="min-h-screen bg-gradient-to-br from-indigo-900 via-purple-900 to-black py-20 px-4">
+      <div className="max-w-5xl mx-auto backdrop-blur-lg bg-white/10 border border-white/20 rounded-3xl shadow-2xl p-10 text-white">
 
-      <div className="mb-8">
-        <h2 className="text-2xl font-semibold text-gray-800 mb-4">Getting Started with JMeter: Step-by-Step Guide</h2>
-        
-        <div className="space-y-6">
-          <div className="bg-gray-50 p-4 rounded-lg border-l-4 border-blue-500">
-            <h3 className="text-xl font-medium text-gray-800 mb-2">Step 1: Download and Install JMeter</h3>
-            <ol className="list-decimal ml-5 space-y-2 text-gray-700">
-              <li>Visit the <span className="font-medium">Apache JMeter website</span> (<span className="text-blue-600">https://jmeter.apache.org/download_jmeter.cgi</span>)</li>
-              <li>Download the latest stable release (binary version)</li>
-              <li>Extract the downloaded zip/tar file to your preferred location</li>
-              <li>Ensure you have Java installed (JMeter requires Java 8 or higher)</li>
-            </ol>
+        {/* Hero */}
+        <div className="text-center mb-12">
+          <div className="inline-flex items-center justify-center w-20 h-20 rounded-full bg-gradient-to-br from-purple-500 to-indigo-600 text-white text-4xl shadow-lg mb-4">
+            🧪
           </div>
-
-          <div className="bg-gray-50 p-4 rounded-lg border-l-4 border-blue-500">
-            <h3 className="text-xl font-medium text-gray-800 mb-2">Step 2: Launch JMeter</h3>
-            <ol className="list-decimal ml-5 space-y-2 text-gray-700">
-              <li>Navigate to the bin directory in the JMeter folder</li>
-              <li>Run jmeter.bat (Windows) or jmeter.sh (Linux/Mac)</li>
-              <li>The JMeter GUI should open, presenting you with a blank test plan</li>
-            </ol>
-          </div>
-
-          <div className="bg-gray-50 p-4 rounded-lg border-l-4 border-blue-500">
-            <h3 className="text-xl font-medium text-gray-800 mb-2">Step 3: Create a Test Plan</h3>
-            <ol className="list-decimal ml-5 space-y-2 text-gray-700">
-              <li>Right-click on "Test Plan" and rename it if desired</li>
-              <li>Add a Thread Group: Right-click on Test Plan → Add → Threads (Users) → Thread Group</li>
-              <li>Configure the Thread Group:
-                <ul className="list-disc ml-5 mt-1">
-                  <li>Number of Threads: Set the number of virtual users</li>
-                  <li>Ramp-up Period: Time to start all threads</li>
-                  <li>Loop Count: How many times to execute the test</li>
-                </ul>
-              </li>
-            </ol>
-          </div>
-
-          <div className="bg-gray-50 p-4 rounded-lg border-l-4 border-blue-500">
-            <h3 className="text-xl font-medium text-gray-800 mb-2">Step 4: Add HTTP Request</h3>
-            <ol className="list-decimal ml-5 space-y-2 text-gray-700">
-              <li>Right-click on Thread Group → Add → Sampler → HTTP Request</li>
-              <li>Configure HTTP Request:
-                <ul className="list-disc ml-5 mt-1">
-                  <li>Server Name or IP: Enter the domain (e.g., example.com)</li>
-                  <li>Protocol: HTTP or HTTPS</li>
-                  <li>Method: GET, POST, PUT, etc.</li>
-                  <li>Path: The URL path after the domain</li>
-                  <li>Add parameters, body data, or headers as needed</li>
-                </ul>
-              </li>
-            </ol>
-          </div>
-
-          <div className="bg-gray-50 p-4 rounded-lg border-l-4 border-blue-500">
-            <h3 className="text-xl font-medium text-gray-800 mb-2">Step 5: Add Listeners</h3>
-            <ol className="list-decimal ml-5 space-y-2 text-gray-700">
-              <li>Right-click on Thread Group → Add → Listener → View Results Tree</li>
-              <li>Add additional listeners as needed:
-                <ul className="list-disc ml-5 mt-1">
-                  <li>Summary Report</li>
-                  <li>Aggregate Report</li>
-                  <li>Graph Results</li>
-                </ul>
-              </li>
-              <li>These listeners will help visualize and analyze test results</li>
-            </ol>
-          </div>
-
-          <div className="bg-gray-50 p-4 rounded-lg border-l-4 border-blue-500">
-            <h3 className="text-xl font-medium text-gray-800 mb-2">Step 6: Run the Test</h3>
-            <ol className="list-decimal ml-5 space-y-2 text-gray-700">
-              <li>Save your test plan: File → Save Test Plan As</li>
-              <li>Click the green "Start" button (or press Ctrl+R)</li>
-              <li>Monitor the results in your listeners</li>
-              <li>Click the red "Stop" button when finished</li>
-            </ol>
-          </div>
-
-          <div className="bg-gray-50 p-4 rounded-lg border-l-4 border-blue-500">
-            <h3 className="text-xl font-medium text-gray-800 mb-2">Step 7: Analyze Results</h3>
-            <ol className="list-decimal ml-5 space-y-2 text-gray-700">
-              <li>Review response times, throughput, and error rates</li>
-              <li>Export results for reporting if needed</li>
-              <li>Identify performance bottlenecks or issues</li>
-            </ol>
-          </div>
-        </div>
-      </div>
-
-      <div className="mb-8 bg-blue-50 p-6 rounded-lg border border-blue-200">
-        <h2 className="text-2xl font-semibold text-gray-800 mb-4">Example: Testing a Login Page</h2>
-        
-        <div className="space-y-4">
-          <p className="text-gray-700">
-            Let's create a test plan to load test a website's login functionality:
-          </p>
-
-          <div className="bg-white p-4 rounded-lg shadow-sm">
-            <h4 className="font-medium text-gray-800 mb-2">1. Set up Thread Group</h4>
-            <ul className="list-disc ml-5 text-gray-700">
-              <li>Number of Threads: 100 users</li>
-              <li>Ramp-up Period: 30 seconds</li>
-              <li>Loop Count: 5 times</li>
-            </ul>
-          </div>
-
-          <div className="bg-white p-4 rounded-lg shadow-sm">
-            <h4 className="font-medium text-gray-800 mb-2">2. Add HTTP Request for Login Page</h4>
-            <ul className="list-disc ml-5 text-gray-700">
-              <li>Server Name: mywebsite.com</li>
-              <li>Protocol: HTTPS</li>
-              <li>Method: POST</li>
-              <li>Path: /login</li>
-              <li>Parameters:
-                <ul className="list-disc ml-5">
-                  <li>username: {'${username}'}</li>
-                  <li>password: {'${password}'}</li>
-                </ul>
-              </li>
-            </ul>
-          </div>
-
-          <div className="bg-white p-4 rounded-lg shadow-sm">
-            <h4 className="font-medium text-gray-800 mb-2">3. Add CSV Data Set Config</h4>
-            <p className="text-gray-700 mb-2">To use different login credentials:</p>
-            <ul className="list-disc ml-5 text-gray-700">
-              <li>Right-click Thread Group → Add → Config Element → CSV Data Set Config</li>
-              <li>Filename: users.csv (containing username,password pairs)</li>
-              <li>Variable Names: username,password</li>
-              <li>Delimiter: ,</li>
-            </ul>
-          </div>
-
-          <div className="bg-white p-4 rounded-lg shadow-sm">
-            <h4 className="font-medium text-gray-800 mb-2">4. Add Response Assertions</h4>
-            <ul className="list-disc ml-5 text-gray-700">
-              <li>Right-click HTTP Request → Add → Assertions → Response Assertion</li>
-              <li>Test Field: Text Response</li>
-              <li>Pattern Matching Rules: Contains</li>
-              <li>Patterns to Test: Dashboard (or any text indicating successful login)</li>
-            </ul>
-          </div>
-
-          <div className="bg-white p-4 rounded-lg shadow-sm">
-            <h4 className="font-medium text-gray-800 mb-2">5. Add Listeners</h4>
-            <ul className="list-disc ml-5 text-gray-700">
-              <li>View Results Tree</li>
-              <li>Aggregate Report</li>
-              <li>Response Time Graph</li>
-            </ul>
-          </div>
-
-          <p className="text-gray-700 italic">
-            This test will simulate 100 users logging into the system over 30 seconds, repeating 5 times, using different credentials from a CSV file.
+          <h1 className="text-4xl md:text-5xl font-extrabold mb-4 bg-gradient-to-r from-purple-400 to-pink-600 text-transparent bg-clip-text">
+            Apache JMeter Tutorial
+          </h1>
+          <p className="max-w-2xl mx-auto text-white/80">
+            Learn how to install, configure, and run powerful load tests using Apache JMeter step-by-step.
           </p>
         </div>
-      </div>
 
-      <div className="mb-6">
-        <h2 className="text-2xl font-semibold text-gray-800 mb-4">JMeter Best Practices</h2>
-        <ul className="space-y-2 text-gray-700">
-          <li className="flex items-start">
-            <span className="text-green-500 mr-2">✓</span> 
-            <span>Run JMeter in non-GUI mode for actual load tests (using -n flag)</span>
-          </li>
-          <li className="flex items-start">
-            <span className="text-green-500 mr-2">✓</span> 
-            <span>Add Think Time with Timers to simulate realistic user behavior</span>
-          </li>
-          <li className="flex items-start">
-            <span className="text-green-500 mr-2">✓</span> 
-            <span>Use CSV files for test data to avoid hardcoding values</span>
-          </li>
-          <li className="flex items-start">
-            <span className="text-green-500 mr-2">✓</span> 
-            <span>Monitor server resources during testing</span>
-          </li>
-          <li className="flex items-start">
-            <span className="text-green-500 mr-2">✓</span> 
-            <span>Start with a small number of threads and gradually increase</span>
-          </li>
-        </ul>
-      </div>
+        {/* Download Callout */}
+        <div className="mb-12 p-6 rounded-xl border border-white/20 bg-white/5 flex flex-col md:flex-row md:items-center md:justify-between">
+          <span className="text-sm md:text-base text-white/80">
+            Download JMeter: <code className="font-mono text-purple-200">https://jmeter.apache.org/download_jmeter.cgi</code>
+          </span>
+          <button
+            onClick={() => handleCopy('https://jmeter.apache.org/download_jmeter.cgi')}
+            className="mt-4 md:mt-0 px-4 py-2 bg-purple-600 hover:bg-purple-700 rounded-lg transition"
+          >
+            {copied ? 'Copied!' : 'Copy URL'}
+          </button>
+        </div>
 
-      <div className="bg-yellow-50 p-4 rounded-lg border-l-4 border-yellow-500">
-        <h3 className="text-lg font-medium text-gray-800 mb-2">Important Note</h3>
-        <p className="text-gray-700">
-          Always get permission before performing load tests on production systems.
-          Unauthorized load testing can be considered a Denial of Service attack.
-        </p>
+        {/* Steps */}
+        <div className="space-y-10">
+          {steps.map((step, idx) => (
+            <div
+              key={idx}
+              className="bg-white/10 backdrop-blur-md border border-white/20 p-6 rounded-2xl shadow-inner"
+            >
+              <h2 className="text-2xl font-bold mb-3">{step.title}</h2>
+              <ul className="list-decimal ml-6 space-y-2 text-white/90">
+                {step.instructions.map((line, i) => (
+                  <li key={i}>{line}</li>
+                ))}
+              </ul>
+              {step.extra && (
+                <div className="mt-4 p-4 bg-yellow-300/20 border-l-4 border-yellow-400 rounded">
+                  <p className="text-yellow-200 font-medium">{step.extra}</p>
+                </div>
+              )}
+            </div>
+          ))}
+        </div>
+
+        {/* Example */}
+        <div className="my-12 p-6 rounded-xl border border-white/20 bg-white/10 backdrop-blur-md">
+          <h3 className="text-2xl font-bold mb-3">💡 Example: Load Test a Login Page</h3>
+          <p className="text-white/80 mb-2">
+            Simulate 100 users logging in with CSV credentials.
+          </p>
+          <div className="bg-black/20 p-4 rounded-lg overflow-x-auto font-mono text-white/90">
+            Thread Group: 100 Users | Ramp-up: 30s | Loop Count: 5{'\n'}
+            HTTP Request: POST /login | Server: mywebsite.com | HTTPS{'\n'}
+            CSV Data: users.csv (username,password)
+          </div>
+        </div>
+
+        {/* Best Practices */}
+        <div className="bg-white/10 backdrop-blur-md border border-white/20 p-6 rounded-xl mb-8">
+          <h3 className="text-2xl font-bold mb-4">✅ JMeter Best Practices</h3>
+          <ul className="space-y-2 text-white/90">
+            <li><span className="text-green-400 mr-2">✓</span> Run in non-GUI mode for real tests</li>
+            <li><span className="text-green-400 mr-2">✓</span> Add Think Time for realistic behavior</li>
+            <li><span className="text-green-400 mr-2">✓</span> Monitor server resources</li>
+            <li><span className="text-green-400 mr-2">✓</span> Use CSVs for dynamic data</li>
+          </ul>
+        </div>
+
+        {/* Warning */}
+        <div className="bg-yellow-400/10 p-4 rounded-xl border-l-4 border-yellow-400">
+          <h4 className="text-lg font-bold mb-2">⚠️ Important</h4>
+          <p className="text-white/80">
+            Always get permission before running load tests on production — unauthorized load tests can be considered a Denial of Service.
+          </p>
+        </div>
       </div>
     </div>
   );
 };
+
+// Steps data
+const steps = [
+  {
+    title: 'Step 1: Download & Install',
+    instructions: [
+      'Go to the official Apache JMeter site.',
+      'Download the latest binary release.',
+      'Extract the archive to a folder.',
+      'Ensure Java 8+ is installed.'
+    ]
+  },
+  {
+    title: 'Step 2: Launch JMeter',
+    instructions: [
+      'Open the bin directory.',
+      'Run jmeter.bat (Windows) or jmeter.sh (Linux/Mac).',
+      'The GUI will open with a blank Test Plan.'
+    ]
+  },
+  {
+    title: 'Step 3: Create a Test Plan',
+    instructions: [
+      'Right-click Test Plan and rename if needed.',
+      'Add a Thread Group: Test Plan → Add → Threads → Thread Group.',
+      'Set Number of Threads, Ramp-up Period, and Loop Count.'
+    ]
+  },
+  {
+    title: 'Step 4: Add HTTP Request',
+    instructions: [
+      'Right-click Thread Group → Add → Sampler → HTTP Request.',
+      'Set Server Name, Protocol, Method, and Path.',
+      'Add parameters, headers, or body data as needed.'
+    ]
+  },
+  {
+    title: 'Step 5: Add Listeners',
+    instructions: [
+      'Add View Results Tree.',
+      'Add Summary Report or Graph Results to visualize output.'
+    ]
+  },
+  {
+    title: 'Step 6: Run the Test',
+    instructions: [
+      'Save the Test Plan.',
+      'Click the green Start button or press Ctrl+R.',
+      'Monitor results, then Stop when done.'
+    ]
+  },
+  {
+    title: 'Step 7: Analyze Results',
+    instructions: [
+      'Check response times and throughput.',
+      'Export reports if needed.',
+      'Find performance issues.'
+    ]
+  }
+];
 
 export default JmeterComponent;
