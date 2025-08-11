@@ -77,8 +77,10 @@ const tools = [
     title: "vi / Vim",
     description:
       "Master the vi text editor in Linux with modes, navigation, editing commands, and quick reference guides.",
-    link: "/vi",
+    link: s",
     icon: "⌨️",
+    gradientFrom: "from-green-500",
+    gon: "⌨️",
     gradientFrom: "from-green-500",
     gradientTo: "to-teal-600",
     shadowColor: "shadow-green-500/25",
