@@ -28,7 +28,7 @@ function App() {
         <Route path="/kubernetes" element={<KubernetesComponent />} /> {/* ✅ fixed typo */}
         <Route path="/ansible" element={<AnsibleComponent />} />
         <Route path="/bash-commands" element={<BashComponent />} />
-        <Route path="/vi-editor" element={<Vi />} />
+        <Route path="/vi" element={<Vi />} />
       </Routes>
     </BrowserRouter>
   );

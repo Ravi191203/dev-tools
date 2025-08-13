@@ -54,15 +54,15 @@ const tools = [
     title: "vi / Vim",
     description:
       "Master the vi text editor in Linux with modes, navigation, editing commands, and quick reference guides.",
-    link: "/vi-editor",
+    link: "/vi",
     icon: "⌨️",
   },
 ];
 
 const HomePage = () => {
   const handleToolClick = (link) => {
-    console.log(`Navigating to: ${link}`);
-    // In a real app, you would use router navigation here
+    // Using window.location for navigation (works without router)
+    window.location.href = link;
   };
 
   return (
@@ -70,7 +70,7 @@ const HomePage = () => {
       {/* Header */}
       <header className="bg-white shadow-sm">
         <div className="max-w-6xl mx-auto px-4 py-12">
-          <div className="text-center">
+          <div className="text-center"><br></br>
             <h1 className="text-4xl font-bold text-gray-900 mb-4">
               Dev-Tools Mastery Hub
             </h1>
