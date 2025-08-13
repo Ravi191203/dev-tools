@@ -12,7 +12,7 @@ import GitGithubComponent from './components/GitGithubComponent.jsx';
 import KubernetesComponent from './components/KubernetesComponent.jsx';
 import AnsibleComponent from './components/AnsibleComponent.jsx';
 import BashComponent from './components/BashComponent.jsx';
-import Vi from './components/Vi.jsx'; // ✅ Import the vi guide
+import Vi from './components/vi.jsx';
 
 function App() {
   return (
