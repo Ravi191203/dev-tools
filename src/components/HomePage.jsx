@@ -1,4 +1,5 @@
 import React from "react";
+import { useNavigate } from "react-router-dom";
 
 const tools = [
   {
@@ -60,9 +61,10 @@ const tools = [
 ];
 
 const HomePage = () => {
+  const navigate = useNavigate();
+
   const handleToolClick = (link) => {
-    // Using window.location for navigation (works without router)
-    window.location.href = link;
+    navigate(link);
   };
 
   return (
@@ -70,12 +72,14 @@ const HomePage = () => {
       {/* Header */}
       <header className="bg-white shadow-sm">
         <div className="max-w-6xl mx-auto px-4 py-12">
-          <div className="text-center"><br></br>
+          <div className="text-center">
+            <br />
             <h1 className="text-4xl font-bold text-gray-900 mb-4">
               Dev-Tools Mastery Hub
             </h1>
             <p className="text-lg text-gray-600 max-w-2xl mx-auto">
-              Master modern development tools with interactive tutorials, real-world examples, and expert insights.
+              Master modern development tools with interactive tutorials,
+              real-world examples, and expert insights.
             </p>
           </div>
         </div>
@@ -127,9 +131,13 @@ const HomePage = () => {
             Ready to Enhance Your Development Skills?
           </h2>
           <p className="text-gray-600 mb-6">
-            Access comprehensive tutorials and guides for essential development tools
+            Access comprehensive tutorials and guides for essential development
+            tools
           </p>
-          <button className="bg-blue-600 hover:bg-blue-700 text-white font-medium py-3 px-6 rounded-md transition-colors duration-200">
+          <button
+            onClick={() => navigate("/get-started")}
+            className="bg-blue-600 hover:bg-blue-700 text-white font-medium py-3 px-6 rounded-md transition-colors duration-200"
+          >
             Get Started
           </button>
         </div>
