@@ -27,7 +27,8 @@ function NavBar() {
     { name: 'Docker', href: '/docker', icon: '🐳' },
     { name: 'Git & GitHub', href: '/git-github', icon: '🔧' },
     { name: 'Kubernetes', href: '/kubernetes', icon: '☸️' },
-    { name: 'Bash', href: '/bash-commands', icon: '💻' }
+    { name: 'Bash', href: '/bash-commands', icon: '💻' },
+    { name: 'vi', href: '/vi', icon: '🦟' }
   ];
 
   return (
