@@ -1,7 +1,8 @@
 import './App.css';
 import NavBar from './components/NavBar.jsx';
-import { BrowserRouter, Routes, Route } from 'react-router-dom';
+// import { BrowserRouter, Routes, Route } from 'react-router-dom';
 import React, { useState } from 'react';
+import { BrowserRouter as BrowserRouter, Router, Routes, Route } from 'react-router-dom';
 
 import JmeterComponent from './components/JmeterComponent.jsx';
 import SeleniumComponent from './components/SeleniumComponent.jsx';
@@ -16,16 +17,10 @@ import Vi from './components/vi.jsx';
 import NifiComponent from './components/NifiComponent.jsx';
 
 function App() {
-  const [isDarkMode, setIsDarkMode] = useState(false);
-
-  const toggleDarkMode = () => {
-    setIsDarkMode(!isDarkMode);
-  };
-
   return (
     <BrowserRouter>
-      <div className={isDarkMode ? 'dark' : ''}>
-        <NavBar toggleDarkMode={toggleDarkMode} isDarkMode={isDarkMode} />
+      <div>
+        <NavBar />
         <Routes>
           <Route path="/" element={<HomePage />} />
           <Route path="/jmeter" element={<JmeterComponent />} />
