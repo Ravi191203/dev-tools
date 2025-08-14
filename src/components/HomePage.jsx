@@ -51,6 +51,12 @@ const tools = [
     link: "/vi",
     icon: "⌨️",
   },
+  {
+    title:"Apache NIFI",
+    description:"Learn to automate and manage data flows between systems with this step-by-step guide to Apache NiFi.",
+    link:"/nifi",
+    icon:"⚡️"    
+  }
 ];
 
 // --- Helper Icons ---
@@ -60,40 +66,11 @@ const SearchIcon = () => (
   </svg>
 );
 
-const SunIcon = () => (
-  <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round" className="w-5 h-5 text-slate-800"><path d="M12 1v2"/><path d="M12 21v2"/><path d="m4.22 4.22 1.42 1.42"/><path d="m18.36 18.36 1.42 1.42"/><path d="M1 12h2"/><path d="M21 12h2"/><path d="m4.22 19.78 1.42-1.42"/><path d="m18.36 5.64 1.42-1.42"/><circle cx="12" cy="12" r="5"/></svg>
-);
 
-const MoonIcon = () => (
-  <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round" className="w-5 h-5 text-slate-200"><path d="M21 12.79A9 9 0 1 1 11.21 3 7 7 0 0 0 21 12.79z"/></svg>
-);
 
 // --- Main HomePage Component ---
 const HomePage = () => {
   const [searchQuery, setSearchQuery] = useState('');
-  const [isDarkMode, setIsDarkMode] = useState(false);
-
-  // Load theme preference
-  useEffect(() => {
-    const savedTheme = localStorage.getItem('theme');
-    const prefersDark = window.matchMedia && window.matchMedia('(prefers-color-scheme: dark)').matches;
-    if (savedTheme === 'dark' || (!savedTheme && prefersDark)) {
-      setIsDarkMode(true);
-    } else {
-      setIsDarkMode(false);
-    }
-  }, []);
-
-  // Save theme preference
-  useEffect(() => {
-    if (isDarkMode) {
-      document.documentElement.classList.add('dark');
-      localStorage.setItem('theme', 'dark');
-    } else {
-      document.documentElement.classList.remove('dark');
-      localStorage.setItem('theme', 'light');
-    }
-  }, [isDarkMode]);
 
   const filteredTools = tools.filter(tool =>
     tool.title.toLowerCase().includes(searchQuery.toLowerCase())
@@ -106,17 +83,6 @@ const HomePage = () => {
       <header className="relative pt-24 pb-16 text-center">
         <div className="absolute inset-0 -z-10">
           <div className="absolute inset-0 bg-gradient-to-b from-blue-50 to-slate-50 dark:from-blue-900/20 dark:to-slate-900"></div>
-        </div>
-
-        {/* Dark Mode Toggle */}
-        <div className="absolute top-4 right-4">
-          <button
-            onClick={() => setIsDarkMode(!isDarkMode)}
-            className="p-2 rounded-full bg-slate-200/80 dark:bg-slate-800/80 backdrop-blur-sm hover:bg-slate-300 dark:hover:bg-slate-700 transition-colors"
-            aria-label="Toggle dark mode"
-          >
-            {isDarkMode ? <SunIcon /> : <MoonIcon />}
-          </button>
         </div>
 
         <div className="max-w-4xl mx-auto px-4">
@@ -185,7 +151,7 @@ const HomePage = () => {
             Access comprehensive tutorials and guides for essential development tools and accelerate your career.
           </p>
           <Link
-            to="/get-started"
+            to="/"
             className="inline-block bg-white text-blue-600 font-bold py-3 px-8 rounded-full hover:bg-slate-100 transform hover:scale-105 transition-all duration-300 shadow-md"
           >
             Get Started Now

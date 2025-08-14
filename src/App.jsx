@@ -13,7 +13,7 @@ import KubernetesComponent from './components/KubernetesComponent.jsx';
 import AnsibleComponent from './components/AnsibleComponent.jsx';
 import BashComponent from './components/BashComponent.jsx';
 import Vi from './components/vi.jsx';
-
+import NifiComponent from './components/NifiComponent.jsx';
 function App() {
   return (
     <BrowserRouter>
@@ -29,6 +29,7 @@ function App() {
         <Route path="/ansible" element={<AnsibleComponent />} />
         <Route path="/bash-commands" element={<BashComponent />} />
         <Route path="/vi" element={<Vi />} />
+        <Route path="/nifi" element={<NifiComponent />} />
       </Routes>
     </BrowserRouter>
   );
