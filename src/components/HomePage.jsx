@@ -1,7 +1,7 @@
-import React, { useState } from 'react';
-import { BrowserRouter as Router, Routes, Route, Link } from 'react-router-dom';
+import React, { useState, useEffect } from 'react';
 import { motion, AnimatePresence } from 'framer-motion';
 import { Sparkles, Bot, Search, X } from 'lucide-react';
+import { BrowserRouter as Router, Routes, Route, Link } from 'react-router-dom';
 
 // --- Data for the tools ---
 const tools = [
@@ -192,7 +192,7 @@ const AiAssistantModal = ({ isOpen, onClose, tools }) => {
 };
 
 
-// --- HomePage Component ---
+// --- Main HomePage Component ---
 const HomePage = () => {
   const [searchQuery, setSearchQuery] = useState('');
   const [isModalOpen, setIsModalOpen] = useState(false);
@@ -249,7 +249,7 @@ const HomePage = () => {
           <AnimatePresence>
             {filteredTools.map((tool) => (
               <motion.div key={tool.title} variants={itemVariants} layout>
-                <Link to={tool.link} className="group block h-full bg-slate-800/50 backdrop-blur-md rounded-2xl border border-slate-800 p-6 shadow-md transform transition-all duration-300 relative overflow-hidden hover:-translate-y-1">
+                <a href={tool.link} className="group block h-full bg-slate-800/50 backdrop-blur-md rounded-2xl border border-slate-800 p-6 shadow-md transform transition-all duration-300 relative overflow-hidden hover:-translate-y-1">
                   <div className="absolute top-0 left-0 w-full h-full bg-gradient-to-br from-white/5 to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-500"></div>
                   <div className="absolute -top-1 -left-1 w-1/2 h-1/2 bg-gradient-to-br from-blue-500 to-transparent rounded-full filter blur-xl opacity-0 group-hover:opacity-50 transition-opacity duration-500"></div>
                   <div className="relative z-10">
@@ -261,7 +261,7 @@ const HomePage = () => {
                     </div>
                     <p className="text-slate-400 leading-relaxed">{tool.description}</p>
                   </div>
-                </Link>
+                </a>
               </motion.div>
             ))}
           </AnimatePresence>
@@ -279,9 +279,9 @@ const HomePage = () => {
           <div className="relative z-10">
             <h2 className="text-3xl font-bold mb-3">Ready to Enhance Your Skills?</h2>
             <p className="mb-6 opacity-90 max-w-xl mx-auto">Access comprehensive tutorials and guides for essential development tools and accelerate your career.</p>
-            <Link to="/" className="inline-block bg-white text-blue-600 font-bold py-3 px-8 rounded-full hover:bg-slate-100 transform hover:scale-105 transition-all duration-300 shadow-lg">
+            <a href="/" className="inline-block bg-white text-blue-600 font-bold py-3 px-8 rounded-full hover:bg-slate-100 transform hover:scale-105 transition-all duration-300 shadow-lg">
               Get Started Now
-            </Link>
+            </a>
           </div>
         </div>
       </main>
@@ -293,33 +293,4 @@ const HomePage = () => {
   );
 };
 
-// --- Placeholder components for other pages ---
-const createToolPageComponent = (toolName) => () => (
-    <div className="min-h-screen bg-slate-900 text-white flex items-center justify-center p-4">
-        <h1 className="text-4xl font-bold text-center">{toolName} Page</h1>
-        <p className="text-slate-400 mt-4">Content for this page would go here.</p>
-    </div>
-);
-
-// --- Main App Component ---
-const App = () => {
-    return (
-        <Router>
-            <div className="bg-slate-900">
-                <Routes>
-                    <Route path="/" element={<HomePage />} />
-                    {/* Create a route for each tool */}
-                    {tools.map(tool => (
-                        <Route 
-                            key={tool.link} 
-                            path={tool.link} 
-                            element={React.createElement(createToolPageComponent(tool.title))} 
-                        />
-                    ))}
-                </Routes>
-            </div>
-        </Router>
-    );
-};
-
-export default App;
+export default HomePage;
